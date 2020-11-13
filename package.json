@@ -1,0 +1,32 @@
+{
+  "name": "fuel-logger-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "clean": "rm dist/bundle.js",
+    "build-prod": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elemorelli/fuel-logger-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elemorelli/fuel-logger-web/issues"
+  },
+  "homepage": "https://github.com/elemorelli/fuel-logger-web#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "parcel-bundler": "^1.12.4"
+  }
+}
