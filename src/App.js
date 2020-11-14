@@ -1,13 +1,32 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import AppRouter, { history } from "./routers/AppRouter";
+import LoadingPage from "./components/LoadingPage";
 
-class App extends React.Component {
-  render() {
-    return (
-      <>
-        <h1>Hello world!</h1>
-      </>
-    );
+const mountNode = document.getElementById("app");
+
+const jsx = <AppRouter />;
+
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, mountNode);
+    hasRendered = true;
   }
-}
+};
 
-export default App;
+ReactDOM.render(<LoadingPage />, mountNode);
+
+const isLogged = true;
+
+setTimeout(() => {
+  if (isLogged) {
+    renderApp();
+    if (history.location.pathname === "/") {
+      history.push("/dashboard");
+    }
+  } else {
+    renderApp();
+    history.push("/");
+  }
+}, 500);
