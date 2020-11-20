@@ -29,6 +29,6 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
-    "parcel-bundler": "^1.12.4"
+    "parcel": "^2.0.0-nightly.453"
   }
 }

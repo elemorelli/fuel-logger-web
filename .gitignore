@@ -33,6 +33,7 @@ bower_components
 build/Release
 dist/
 .cache
+.parcel-cache
 
 # Dependency directories
 node_modules/

@@ -1,5 +1,5 @@
 import React from "react";
-import loaderImage from "../images/loader.gif";
+import loaderImage from "url:../images/loader.gif";
 
 const LoadingPage = () => (
   <div>
