@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "isomorphic-unfetch";
+import { validToken, validateLogin } from "./lib/auth";
+import { get } from "./lib/fetch";
 import AppRouter, { history } from "./routers/AppRouter";
 import LoadingPage from "./components/LoadingPage";
 
@@ -17,16 +20,14 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, mountNode);
 
-const isLogged = true;
-
-setTimeout(() => {
-  if (isLogged) {
+validateLogin()
+  .then(() => {
     renderApp();
     if (history.location.pathname === "/") {
       history.push("/dashboard");
     }
-  } else {
+  })
+  .catch(() => {
     renderApp();
     history.push("/");
-  }
-}, 500);
+  });

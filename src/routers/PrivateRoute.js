@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { validToken } from "../lib/auth";
 import Header from "../components/Header";
 
-export const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => (
+export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     component={(props) =>
-      isAuthenticated || true ? (
+      validToken() ? (
         <div>
           <Header />
           <Component {...props} />
