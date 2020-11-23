@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
 import { setToken } from "../lib/auth";
+import { populateUserProfile } from "../actions/userProfile";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,8 +14,9 @@ const LoginPage = () => {
     setMessage();
 
     try {
-      const data = await post("http://localhost:3000/users/login", { email, password }, false);
-      setToken(data.token);
+      const userData = await post("http://localhost:3000/users/login", { email, password }, false);
+      store.dispatch(populateUserProfile(userData));
+      setToken(userData.token);
       history.push("/dashboard");
     } catch (error) {
       setMessage(error.response);

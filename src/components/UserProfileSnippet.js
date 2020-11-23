@@ -1,22 +1,20 @@
-import React, { useEffect, useReducer } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { history } from "../routers/AppRouter";
 import { get, post } from "../lib/fetch";
 import { clearToken } from "../lib/auth";
 
-import UserContext from "../context/user-context";
-import userReducer from "../reducers/userReducer";
+import userProfileReducer from "../reducers/userProfile";
 
 import loaderImage from "url:../images/loader.gif";
 
 const UserProfileSnippet = () => {
-  const [user, userDispatch] = useReducer(userReducer, []);
+  const user = useSelector((state) => state.userProfile);
 
-  useEffect(async () => {
-    const user = await get("http://localhost:3000/users/me");
-    userDispatch({ type: "POPULATE_USER", user });
-  }, []);
+  console.log({user})
+  const dispatch = useDispatch();
 
   const onLogout = async () => {
     post("http://localhost:3000/users/logout");
@@ -25,7 +23,7 @@ const UserProfileSnippet = () => {
   };
 
   return (
-    <UserContext.Provider value={{ user, userDispatch }}>
+    <div>
       <div>{user.name}</div>
       {user._id ? (
         <img
@@ -39,7 +37,7 @@ const UserProfileSnippet = () => {
       )}
       <Link to="/user/edit">Edit user</Link>
       <button onClick={onLogout}>Logout</button>
-    </UserContext.Provider>
+    </div>
   );
 };
 export default UserProfileSnippet;
