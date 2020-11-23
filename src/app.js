@@ -2,11 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "isomorphic-unfetch";
-import configureStore from "./store/configureStore";
-import { validateLogin } from "./lib/auth";
+
 import AppRouter, { history } from "./routers/AppRouter";
-import LoadingPage from "./components/LoadingPage";
+import configureStore from "./store/configureStore";
 import { populateUserProfile } from "./actions/userProfile";
+
+import { validateLogin } from "./lib/auth";
+
+import LoadingPage from "./components/LoadingPage";
+
+import "./styles/styles.scss"
 
 const mountNode = document.getElementById("app");
 ReactDOM.render(<LoadingPage />, mountNode);
