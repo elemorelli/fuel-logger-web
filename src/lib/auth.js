@@ -30,7 +30,7 @@ const validToken = () => {
 const validateLogin = async () => {
   if (!validToken) {
     clearToken();
-    return false;
+    throw new Error();
   }
 
   try {

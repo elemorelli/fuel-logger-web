@@ -1,20 +1,12 @@
 import React from "react";
-import { history } from "../routers/AppRouter";
-import { post } from "../lib/fetch";
-import { clearToken } from "../lib/auth";
+import UserProfileSnippet from "./UserProfileSnippet";
 
 const Header = () => {
-  const onLogout = async () => {
-    post("http://localhost:3000/users/logout");
-    clearToken();
-    history.push("/");
-  };
-
   return (
-    <>
-      <header className="header">Wow! Sucha a header!</header>
-      <button onClick={onLogout}>Logout</button>
-    </>
+    <header className="header">
+      <h1>FuelLogger</h1>
+      <UserProfileSnippet />
+    </header>
   );
 };
 export default Header;
