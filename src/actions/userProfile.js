@@ -1,4 +1,4 @@
-export const populateUserProfile = (user) => ({
+export const populateUserProfile = (userProfile) => ({
   type: "POPULATE_USER_PROFILE",
-  user,
+  userProfile,
 });

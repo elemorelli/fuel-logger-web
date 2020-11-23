@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
 import { setToken } from "../lib/auth";
@@ -8,6 +9,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
 
   const onLogin = async (event) => {
     event.preventDefault();
@@ -15,7 +17,7 @@ const LoginPage = () => {
 
     try {
       const userData = await post("http://localhost:3000/users/login", { email, password }, false);
-      store.dispatch(populateUserProfile(userData));
+      dispatch(populateUserProfile(userData.user));
       setToken(userData.token);
       history.push("/dashboard");
     } catch (error) {

@@ -28,7 +28,7 @@ const validToken = () => {
 };
 
 const validateLogin = async () => {
-  if (!validToken) {
+  if (!validToken()) {
     clearToken();
     throw new Error();
   }
