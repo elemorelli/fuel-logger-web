@@ -1,20 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { history } from "../routers/AppRouter";
-import { get, post } from "../lib/fetch";
+import { post } from "../lib/fetch";
 import { clearToken } from "../lib/auth";
-
-import userProfileReducer from "../reducers/userProfile";
 
 import loaderImage from "url:../images/loader.gif";
 
 const UserProfileSnippet = () => {
   const user = useSelector((state) => state.userProfile);
-
-  console.log({user})
-  const dispatch = useDispatch();
 
   const onLogout = async () => {
     post("http://localhost:3000/users/logout");
@@ -35,7 +30,7 @@ const UserProfileSnippet = () => {
       ) : (
         <img height="100" width="100" alt="loading user avatar" src={loaderImage}></img>
       )}
-      <Link to="/user/edit">Edit user</Link>
+      <Link to="/">Edit Profile</Link>
       <button onClick={onLogout}>Logout</button>
     </div>
   );
