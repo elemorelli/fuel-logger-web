@@ -1,0 +1,20 @@
+@import "../styles/_variables.scss";
+
+.not_found_container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 0;
+  width: 100vw;
+}
+
+.not_found_message {
+  margin: $s-size 0;
+}
+
+.not_found_link {
+  margin: $s-size 0;
+  color: $dark-grey;
+  text-decoration: none;
+}

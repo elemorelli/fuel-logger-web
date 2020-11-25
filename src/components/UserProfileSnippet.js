@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
@@ -27,12 +26,12 @@ const UserProfileSnippet = () => {
   }, []);
 
   const onEditProfile = async () => {
-    // toggleMenu(!menuToggled);
+    toggleMenu(false);
     history.push("/edit/profile");
   };
 
   const onLogout = async () => {
-    // toggleMenu(!menuToggled);
+    toggleMenu(false);
     post("http://localhost:3000/users/logout");
     clearToken();
     history.push("/");
