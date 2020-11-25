@@ -4,16 +4,19 @@ import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
 import { setToken } from "../lib/auth";
 import { populateUserProfile } from "../actions/userProfile";
+import LoadingPage from "./LoadingPage";
 import styles from "./LoginPage.module.scss";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, toggleLoading] = useState(false);
   const dispatch = useDispatch();
 
   const onLogin = async (event) => {
     event.preventDefault();
+    toggleLoading(true);
     setMessage();
 
     try {
@@ -22,11 +25,14 @@ const LoginPage = () => {
       setToken(userData.token);
       history.push("/dashboard");
     } catch (error) {
+      toggleLoading(false);
       setMessage(error.response);
     }
   };
 
-  return (
+  return loading ? (
+    <LoadingPage />
+  ) : (
     <div className={styles.box_layout}>
       <div className={styles.box}>
         <h1 className={styles.title}>Fuel Logger</h1>
