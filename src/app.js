@@ -11,6 +11,7 @@ import { validateLogin } from "./lib/auth";
 
 import LoadingPage from "./components/LoadingPage";
 
+import "normalize.css/normalize.css";
 import "./styles/styles.scss"
 
 const mountNode = document.getElementById("app");

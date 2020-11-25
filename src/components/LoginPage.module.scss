@@ -1,0 +1,24 @@
+@import "../styles/_variables.scss";
+
+.box_layout {
+  /* background: url("/images/bg.jpg"); */
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.box {
+  border-radius: 3px;
+  text-align: center;
+  width: 25rem;
+  padding: $l-size $m-size;
+  background: fade-out($color: #fff, $amount: 0.15);
+}
+
+.title {
+  margin: 0 0 $m-size 0;
+  line-height: 1;
+}

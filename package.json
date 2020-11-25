@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html",
+    "dev": "npm run clean && parcel src/index.html --no-cache",
     "clean": "rm -r dist .parcel-cache",
     "build-prod": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,7 @@
     "history": "^4.10.1",
     "isomorphic-unfetch": "^3.1.0",
     "jwt-decode": "^3.1.2",
+    "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -34,7 +35,8 @@
     "@babel/core": "^7.12.7",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
-    "parcel": "^2.0.0-nightly.460",
+    "parcel": "^2.0.0-nightly.462",
+    "postcss-modules": "^3.2.2",
     "sass": "^1.29.0"
   },
   "browserslist": [

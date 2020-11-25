@@ -1,11 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import UserProfileSnippet from "./UserProfileSnippet";
+import styles from "./header.module.scss";
 
 const Header = () => {
   return (
-    <header className="header">
-      <h1>FuelLogger</h1>
-      <UserProfileSnippet />
+    <header className={styles.header}>
+      <div className="content-container">
+        <div className={styles.header_content}>
+          <Link className={styles.title} to="/dashboard">
+            <h1>Fuel Logger</h1>
+          </Link>
+          <UserProfileSnippet />
+        </div>
+      </div>
     </header>
   );
 };

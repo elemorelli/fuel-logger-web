@@ -15,10 +15,42 @@ body {
   font-size: $m-size;
 }
 
+.content-container {
+  max-width: 80rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $m-size;
+}
+
 button {
   cursor: pointer;
 }
 
 button:disabled {
   cursor: default;
+}
+
+.button {
+  background: $teal;
+  color: white;
+  border: none;
+  display: inline-block;
+  padding: $s-size;
+  line-height: 1;
+  font-weight: 300;
+  font-size: $font-size-large;
+  text-decoration: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin-bottom: $m-size;
+  }
+}
+
+.form__error {
+  margin: 0 0 $m-size 0;
+  font-style: italic;
 }

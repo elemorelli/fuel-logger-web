@@ -4,6 +4,7 @@ import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
 import { setToken } from "../lib/auth";
 import { populateUserProfile } from "../actions/userProfile";
+import styles from "./LoginPage.module.scss";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -26,26 +27,29 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onLogin}>
-        <input
-          type="text"
-          placeholder="Email"
-          autoFocus
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <button type="submit" disabled={!email || !password}>
-          Login
-        </button>
-      </form>
-      <p>{message}</p>
+    <div className={styles.box_layout}>
+      <div className={styles.box}>
+        <h1 className={styles.title}>Fuel Logger</h1>
+        <form className={styles.login_form} onSubmit={onLogin}>
+          <input
+            type="text"
+            placeholder="Email"
+            autoFocus
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button className="button" type="submit" disabled={!email || !password}>
+            Login
+          </button>
+        </form>
+        <p>{message}</p>
+      </div>
     </div>
   );
 };

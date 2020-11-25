@@ -8,10 +8,10 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
     {...rest}
     component={(props) =>
       validToken() ? (
-        <div>
+        <>
           <Header />
           <Component {...props} />
-        </div>
+        </>
       ) : (
         <Redirect to="/" />
       )
