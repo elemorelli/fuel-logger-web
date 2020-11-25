@@ -2,11 +2,11 @@
   "name": "fuel-logger-web",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.html",
   "scripts": {
-    "dev": "npm run clean && parcel src/index.html --no-cache",
-    "clean": "rm -r dist .parcel-cache",
-    "build-prod": "parcel build src/index.html",
+    "clean": "rm -r .parcel-cache dist",
+    "dev": "npm run clean --silent || parcel src/index.html --no-cache",
+    "build": "npm run clean --silent || parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
