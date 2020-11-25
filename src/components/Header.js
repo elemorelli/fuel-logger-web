@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserProfileSnippet from "./UserProfileSnippet";
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 
 const Header = () => {
   return (
