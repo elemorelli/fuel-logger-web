@@ -32,12 +32,12 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.7",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
-    "parcel": "^2.0.0-nightly.462",
-    "postcss-modules": "^3.2.2",
-    "sass": "^1.29.0"
+    "parcel": "^2.0.0-nightly.474",
+    "postcss-modules": "^4.0.0",
+    "sass": "^1.30.0"
   },
   "browserslist": [
     "since 2017-06"
