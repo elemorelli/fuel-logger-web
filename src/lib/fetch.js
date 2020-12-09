@@ -13,10 +13,14 @@ const getAuthHeaders = () => {
 
 const parseResponse = async (response) => {
   if (response.status >= 200 && response.status < 300) {
-    try {
+    const contentType = response.headers.get("Content-Type");
+
+    if (contentType.includes("application/json")) {
       return await response.json();
-    } catch (ignored) {
-      return;
+    } else if (contentType.includes("image/")) {
+      return await response.blob();
+    } else {
+      throw new Error("Unable to parse response");
     }
   } else if (response.status === 401) {
     clearToken();
