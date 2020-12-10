@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { get } from "../lib/fetch";
 
 import loaderImage from "url:../images/loader.gif";
 import notFoundImage from "url:../images/image-not-found.png";
 
-const Vehicle = ({ vehicle }) => {
+import styles from "./VehicleSnippet.module.scss";
+
+const VehicleSnippet = ({ vehicle }) => {
   const [pictureURL, setPictureURL] = useState("");
 
   useEffect(async () => {
@@ -21,15 +24,18 @@ const Vehicle = ({ vehicle }) => {
   }, []);
 
   return (
-    <div>
-      {pictureURL ? (
-        <img height="250" width="250" alt={`"${vehicle.model}"'s picture`} src={pictureURL} />
-      ) : (
-        <img height="250" width="250" alt={`loading "${vehicle.model}"'s picture`} src={loaderImage} />
-      )}
-      <p>{vehicle.model}</p>
-    </div>
+    <Link className={styles.vehicleSnippet} to={`/vehicles/${vehicle._id}`}>
+      <div className={styles.polaroid}>
+        <img
+          height="250"
+          width="250"
+          alt={`"${vehicle.model}"'s picture`}
+          src={pictureURL ? pictureURL : loaderImage}
+        />
+        <div className={styles.vehicleName}>{vehicle.model}</div>
+      </div>
+    </Link>
   );
 };
 
-export default Vehicle;
+export default VehicleSnippet;

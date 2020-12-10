@@ -13,10 +13,11 @@ body {
   line-height: 1.6;
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
+  background-color: $white;
 }
 
 .content-container {
-  max-width: 80rem;
+  max-width: 102.4rem;
   width: 100%;
   margin: 0 auto;
   padding: 0 $m-size;

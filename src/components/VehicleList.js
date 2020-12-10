@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { get } from "../lib/fetch";
 
 import { populateVehicles } from "../actions/vehicles";
 
-import Vehicle from "./Vehicle";
+import VehicleSnippet from "./VehicleSnippet";
+
+import styles from "./VehicleList.module.scss";
 
 const VehicleList = () => {
   const vehicles = useSelector((state) => state.vehicles);
@@ -18,7 +19,11 @@ const VehicleList = () => {
     }
   }, []);
 
-  return <div>{vehicles && vehicles.map((vehicle) => <Vehicle key={vehicle._id} vehicle={vehicle} />)}</div>;
+  return (
+    <div className={styles.list}>
+      {vehicles && vehicles.map((vehicle) => <VehicleSnippet key={vehicle._id} vehicle={vehicle} />)}
+    </div>
+  );
 };
 
 export default VehicleList;
