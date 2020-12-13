@@ -1,5 +1,5 @@
 import React from "react";
-import loaderImage from "url:../images/loader.gif";
+import loaderImage from "url:../images/loader.svg";
 import styles from "./LoadingPage.module.scss";
 
 const LoadingPage = () => (

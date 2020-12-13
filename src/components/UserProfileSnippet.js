@@ -5,7 +5,7 @@ import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
 import { clearToken } from "../lib/auth";
 
-import notFoundImage from "url:../images/image-not-found.png";
+import notFoundImage from "url:../images/image-not-found.svg";
 import styles from "./UserProfileSnippet.module.scss";
 
 const UserProfileSnippet = () => {

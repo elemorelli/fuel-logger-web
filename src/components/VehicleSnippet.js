@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import notFoundImage from "url:../images/image-not-found.png";
+import notFoundImage from "url:../images/image-not-found.svg";
 import styles from "./VehicleSnippet.module.scss";
 
 const VehicleSnippet = ({ vehicle }) => {
