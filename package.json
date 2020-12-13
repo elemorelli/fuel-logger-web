@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.html",
   "scripts": {
-    "clean": "rm -r .parcel-cache dist",
-    "dev": "npm run clean --silent || parcel src/index.html --no-cache",
-    "build": "npm run clean --silent || parcel build src/index.html",
+    "clean": "rimraf .parcel-cache dist",
+    "dev": "npm run clean --silent && parcel src/index.html --no-cache",
+    "build": "npm run clean --silent && parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,8 +35,9 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
-    "parcel": "^2.0.0-nightly.475",
+    "parcel": "^2.0.0-nightly.476",
     "postcss-modules": "^4.0.0",
+    "rimraf": "^3.0.2",
     "sass": "^1.30.0"
   },
   "browserslist": [
