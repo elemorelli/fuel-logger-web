@@ -1,7 +1,7 @@
 @import "../styles/_variables.scss";
 
 .header {
-  background: orange;
+  background: $light-orange;
   display: flex;
   flex-direction: row;
 }

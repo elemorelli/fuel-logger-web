@@ -1,37 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { get } from "../lib/fetch";
-
-import loaderImage from "url:../images/loader.gif";
 import notFoundImage from "url:../images/image-not-found.png";
-
 import styles from "./VehicleSnippet.module.scss";
 
 const VehicleSnippet = ({ vehicle }) => {
-  const [pictureURL, setPictureURL] = useState("");
+  const [imageSource, setImageSource] = useState(`http://localhost:3000/vehicles/${vehicle._id}/picture`);
 
-  useEffect(async () => {
-    if (!pictureURL) {
-      try {
-        const response = await get(`http://localhost:3000/vehicles/${vehicle._id}/picture`);
-        const pictureURL = URL.createObjectURL(response);
-        setPictureURL(pictureURL);
-      } catch (error) {
-        setPictureURL(notFoundImage);
-      }
-    }
-  }, []);
+  const onImageNotFound = () => {
+    setImageSource(notFoundImage);
+  }
 
   return (
     <Link className={styles.vehicleSnippet} to={`/vehicles/${vehicle._id}`}>
       <div className={styles.polaroid}>
-        <img
-          height="250"
-          width="250"
-          alt={`"${vehicle.model}"'s picture`}
-          src={pictureURL ? pictureURL : loaderImage}
-        />
+        <picture>
+          <source srcSet={imageSource} type="image/webp" />
+          <img
+            height="250"
+            width="250"
+            onError={onImageNotFound}
+            alt={`"${vehicle.model}"'s picture`}
+            src={`${imageSource}?format=jpeg`}
+          />
+        </picture>
+
         <div className={styles.vehicleName}>{vehicle.model}</div>
       </div>
     </Link>

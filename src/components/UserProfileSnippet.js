@@ -5,10 +5,12 @@ import { history } from "../routers/AppRouter";
 import { post } from "../lib/fetch";
 import { clearToken } from "../lib/auth";
 
+import notFoundImage from "url:../images/image-not-found.png";
 import styles from "./UserProfileSnippet.module.scss";
 
 const UserProfileSnippet = () => {
   const user = useSelector((state) => state.userProfile);
+  const [avatarSource, setAvatarSource] = useState(`http://localhost:3000/users/${user._id}/avatar`);
   const [menuToggled, toggleMenu] = useState(false);
   const menuContainer = useRef(null);
 
@@ -24,6 +26,10 @@ const UserProfileSnippet = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const onImageNotFound = () => {
+    setAvatarSource(notFoundImage);
+  }
 
   const onEditProfile = async () => {
     toggleMenu(false);
@@ -43,12 +49,16 @@ const UserProfileSnippet = () => {
 
       <div className={styles.menu}>
         <button type="button" className={styles.menu_toggle} onClick={() => toggleMenu(!menuToggled)}>
-          <img
-            height="60"
-            width="60"
-            alt="user profile avatar"
-            src={`http://localhost:3000/users/${user._id}/avatar`}
-          />
+          <picture>
+            <source srcSet={avatarSource} type="image/webp" />
+            <img
+              height="60"
+              width="60"
+              onError={onImageNotFound}
+              alt="user profile avatar"
+              src={`${avatarSource}?format=jpeg`}
+            />
+          </picture>
         </button>
       </div>
 
