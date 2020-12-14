@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { get } from "../lib/fetch";
+import api from "../api"
 
 import { populateVehicles } from "../actions/vehicles";
 
@@ -16,19 +17,19 @@ const VehicleDetailsPage = () => {
 
   useEffect(async () => {
     if (!vehicles) {
-      const response = await get("http://localhost:3000/vehicles");
+      const response = await get(api.vehicles());
       dispatch(populateVehicles(response));
       setVehicle(response.find((vehicle) => vehicle._id === id));
     } else {
       setVehicle(vehicles.find((vehicle) => vehicle._id === id));
     }
-    const response = await get(`http://localhost:3000/vehicles/${id}/stats`);
+    const response = await get(api.vehicleStats);
     setStats(response)
   }, []);
 
   return (
     <div className="content-container">
-      <img height="250" width="250" alt="user profile avatar" src={`http://localhost:3000/vehicles/${id}/picture`} />
+      <img height="250" width="250" alt="vehicle image" src={api.vehiclePicture(vehicle._id)} />
       <div>
         <p>Model: {vehicle.model}</p>
         <p>Fuel Capacity: {vehicle.fuelCapacity}</p>

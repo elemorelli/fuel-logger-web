@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import api from "../api"
 
 import notFoundImage from "url:../images/image-not-found.svg";
 import styles from "./VehicleSnippet.module.scss";
 
 const VehicleSnippet = ({ vehicle }) => {
-  const [imageSource, setImageSource] = useState(`http://localhost:3000/vehicles/${vehicle._id}/picture`);
+  const [imageSource, setImageSource] = useState(api.vehiclePicture(vehicle._id));
 
   const onImageNotFound = () => {
     setImageSource(notFoundImage);

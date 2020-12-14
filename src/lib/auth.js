@@ -1,5 +1,6 @@
 import decode from "jwt-decode";
 import { get } from "./fetch";
+import api from "../api"
 
 const getToken = () => {
   return localStorage.getItem("authToken");
@@ -34,7 +35,7 @@ const validateLogin = async () => {
   }
 
   try {
-    return await get("http://localhost:3000/users/me");
+    return await get(api.userCurrent);
   } catch (error) {
     clearToken();
     throw error;

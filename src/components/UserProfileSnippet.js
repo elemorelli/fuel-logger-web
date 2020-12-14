@@ -2,15 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
 import { history } from "../routers/AppRouter";
-import { post } from "../lib/fetch";
 import { clearToken } from "../lib/auth";
+import { post } from "../lib/fetch";
+import api from "../api"
 
 import notFoundImage from "url:../images/image-not-found.svg";
 import styles from "./UserProfileSnippet.module.scss";
 
 const UserProfileSnippet = () => {
   const user = useSelector((state) => state.userProfile);
-  const [avatarSource, setAvatarSource] = useState(`http://localhost:3000/users/${user._id}/avatar`);
+  const [avatarSource, setAvatarSource] = useState(api.userAvatar(user._id));
   const [menuToggled, toggleMenu] = useState(false);
   const menuContainer = useRef(null);
 
@@ -38,7 +39,7 @@ const UserProfileSnippet = () => {
 
   const onLogout = async () => {
     toggleMenu(false);
-    post("http://localhost:3000/users/logout");
+    post(api.logout());
     clearToken();
     history.push("/");
   };

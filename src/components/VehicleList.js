@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { get } from "../lib/fetch";
+import api from "../api"
 
 import { populateVehicles } from "../actions/vehicles";
 
@@ -14,7 +15,7 @@ const VehicleList = () => {
 
   useEffect(async () => {
     if (!vehicles) {
-      const response = await get("http://localhost:3000/vehicles");
+      const response = await get(api.vehicles);
       dispatch(populateVehicles(response));
     }
   }, []);

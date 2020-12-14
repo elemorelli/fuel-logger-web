@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { history } from "../routers/AppRouter";
-import { post } from "../lib/fetch";
 import { setToken } from "../lib/auth";
+import { post } from "../lib/fetch";
+import api from "../api"
 import { populateUserProfile } from "../actions/userProfile";
 import LoadingPage from "./LoadingPage";
+
 import styles from "./LoginPage.module.scss";
 
 const LoginPage = () => {
@@ -20,7 +22,7 @@ const LoginPage = () => {
     setMessage();
 
     try {
-      const userData = await post("http://localhost:3000/users/login", { email, password }, false);
+      const userData = await post(api.login(), { email, password }, false);
       dispatch(populateUserProfile(userData.user));
       setToken(userData.token);
       history.push("/dashboard");
